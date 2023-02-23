@@ -1,0 +1,41 @@
+      main: 
+   turn_on: 
+            LOAD s4, 01
+            OUTPUT s4, 01
+            LOAD s0, FA
+ on_loop_0: 
+            SUB s0, 01
+            JUMP Z, turn_off
+            LOAD s1, FA
+ on_loop_1: 
+            SUB s1, 01
+            JUMP Z, on_loop_0
+            LOAD s2, 84
+ on_loop_2: 
+            SUB s2, 01
+            JUMP Z, on_loop_1
+            LOAD s3, 06
+ on_loop_3: 
+            SUB s3, 01
+            JUMP Z, on_loop_2
+            JUMP on_loop_3
+  turn_off: 
+            LOAD s4, 00
+            OUTPUT s4, 01
+            LOAD s0, FA
+off_loop_0: 
+            SUB s0, 01
+            JUMP Z, turn_on
+            LOAD s1, FA
+off_loop_1: 
+            SUB s1, 01
+            JUMP Z, off_loop_0
+            LOAD s2, 84
+off_loop_2: 
+            SUB s2, 01
+            JUMP Z, off_loop_1
+            LOAD s3, 02
+off_loop_3: 
+            SUB s3, 01
+            JUMP Z, off_loop_2
+            JUMP off_loop_3
